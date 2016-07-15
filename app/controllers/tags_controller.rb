@@ -13,11 +13,12 @@ class TagsController < ApplicationController
     render json: @tag
   end
 
-  # POST /tags
+  # POST /tag, /tags
   def create
     @tag = Tag.new(tag_params)
     if !@tag.entity_tags.nil?
-	iterator=Array.new( params[:entity_tags])
+	entity_tags=params[:entity_tags]
+	iterator=Array.new(entity_tags)
 	iterator.each{|newtag|
     		@tag.entity_tags << newtag
 	}

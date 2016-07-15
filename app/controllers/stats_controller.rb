@@ -3,7 +3,7 @@ class StatsController < ApplicationController
     calcStats(Tag.all)
   end
   def single
- 	calcStats([Tag.find_by(entity_id: params[:entity_id])]) 
+ 	calcStats(Tag.where(entity_id: params[:entity_id])) 
   end
   def calcStats(tags)
         logger.debug "tags dump"
@@ -15,6 +15,8 @@ class StatsController < ApplicationController
             logger.debug tag
             logger.debug tag.entity_tags
 	    tag.entity_tags.each{|entity_tag|
+		logger.debug "sub tag"
+		logger.debug entity_tag
 	      if userTags[entity_tag].nil?
 		      userTags[entity_tag]=1
 	      else
