@@ -1,25 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This rails app was created with the rails5 api mode.
 
-Things you may want to cover:
+it was tested with ruby 2.2.2 and the gems in the gemfile only.
 
-* Ruby version
+required db is sqlite3. 
 
-* System dependencies
+no performance requirements were provided, so caching is off and the db was left as sqlite3.
 
-* Configuration
+logging is on for ease of inspection
 
-* Database creation
+first: rake db:setup 
+to run in development mode: rails server
+to test: rails test
 
-* Database initialization
+to run in production mode:
 
-* How to run the test suite
+rake secret
+xport SECRET_KEY_BASE='the_above_secret'
+rake db:setup RAILS_ENV="production"
+rails server -e production 
 
-* Services (job queues, cache servers, search engines, etc.)
+use curl commands like these to see it in action:
 
-* Deployment instructions
+note that entity_tags must be an Array, even if only a single entry
 
-* ...
-# challenge
+curl -H "Content-Type: application/json" -X POST http://localhost:4000/tags -d '{"entity_type":"Product","entity_id":"1234","entity_tags":["Smallishereset"]}'
+curl -H "Accept: application/json" http://localhost:4000/tags
+curl -H "Accept: application/json" http://localhost:4000/stats
+curl -H "Content-Type: application/json" http://localhost:4000/tag/1
+
