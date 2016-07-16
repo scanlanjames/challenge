@@ -18,6 +18,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
     if !@tag.entity_tags.nil?
 	entity_tags=params[:entity_tags]
+	entity_tags=@tag.entity_tags if params[:entity_tags].nil?
 	iterator=Array.new(entity_tags)
 	iterator.each{|newtag|
     		@tag.entity_tags << newtag

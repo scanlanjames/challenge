@@ -12,9 +12,9 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tag" do
     assert_difference('Tag.count') do
-	entity_tags=@tag.entity_tags
-	entity_tags=[entity_tags] if !entity_tags.nil? && entity_tags.is_a?(String)
-      post "/tag", params: { tag: { entity_id: @tag.entity_id, entity_tags: entity_tags, entity_type: @tag.entity_type } }, as: :json
+#	entity_tags=@tag.entity_tags
+#	entity_tags=[entity_tags] #if !entity_tags.nil? && entity_tags.is_a?(String)
+      post "/tag", params: { tag: { entity_id: @tag.entity_id, entity_tags: [@tag.entity_tags], entity_type: @tag.entity_type } }, as: :json
     end
 
     assert_response 201
