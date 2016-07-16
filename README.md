@@ -4,6 +4,11 @@ This rails app was created with the rails5 api mode.
 
 it was tested with ruby 2.2.2 and the gems in the gemfile only.
 
+e.g. rvm use 2.2.2
+rvm gemset create railsgems
+rvm gemset use railsgems
+bundle install
+
 required db is sqlite3. 
 
 no performance requirements were provided, so caching is off and the db was left as sqlite3.
